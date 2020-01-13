@@ -3,50 +3,12 @@
     android:layout_height="match_parent"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:background="">
+    android:padding="10dp">
 
     <WebView android:id="@+id/webview1"
         android:layout_width="match_parent"
-        android:layout_height="500px"/>
+        android:layout_height="1700px"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="250px"
-            android:layout_weight="1"
-            android:text="ΔΙΚΑΙΟΥΧΟΙ"
-            android:id="@+id/logingr"/>
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="250px"
-            android:layout_weight="1"
-            android:text="BENEFICIARIES"
-            android:id="@+id/loginen"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="250px"
-            android:layout_weight="1"
-            android:text="ΠΑΡΟΧΕΙΣ"
-            android:id="@+id/prologingr"/>
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="250px"
-            android:layout_weight="1"
-            android:text="PROVIDERS"
-            android:id="@+id/prologinen"/>
-    </LinearLayout>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/AdView"

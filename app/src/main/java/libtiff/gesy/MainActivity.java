@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
+import android.net.http.SslError;
 import android.os.Bundle;
 
 import android.view.View;
@@ -11,6 +12,7 @@ import android.view.Window;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 
+import android.webkit.SslErrorHandler;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -37,10 +39,7 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageButton btnlogingr = (ImageButton)findViewById(R.id.logingr);
-        ImageButton btnloginen = (ImageButton)findViewById(R.id.loginen);
-        ImageButton btnprologingr = (ImageButton)findViewById(R.id.prologingr);
-        ImageButton btnprologinen = (ImageButton)findViewById(R.id.prologinen);
+
         mAdView = findViewById(R.id.AdView);
         webview1  = (WebView) findViewById(R.id.webview1);
 
@@ -52,21 +51,16 @@ public class MainActivity extends Activity
 
         final Activity activity = this;
 
-        btnlogingr.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                String url = "https://portal.gesy.org.cy/dashboard";
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                startActivity(browserIntent);
-            }
-        });
-
         webview1.setWebViewClient(new WebViewClient()
         {
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 Toast.makeText(activity, description, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                // DO NOT CALL SUPER METHOD
+                onReceivedSslError(view, handler, error);
             }
 
         });
@@ -74,11 +68,13 @@ public class MainActivity extends Activity
         webview1.getSettings().setSupportZoom(true);
         webview1.getSettings().setBuiltInZoomControls(true);
         webview1.getSettings().setDisplayZoomControls(false);
+        webview1.getSettings().setDomStorageEnabled(true);
         webview1.getSettings().setJavaScriptEnabled(true);
+        webview1.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webview1.getSettings().setUseWideViewPort(true);
         webview1.getSettings().setLoadWithOverviewMode(true);
         webview1.getSettings().setDefaultTextEncodingName("utf-8");
-        webview1 .loadUrl("https://www.gesy.org.cy/launchpad.html");
+        webview1 .loadUrl("https://portal.gesy.org.cy/dashboard");
 
     }
 
