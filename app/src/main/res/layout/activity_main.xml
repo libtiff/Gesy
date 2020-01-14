@@ -2,13 +2,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:orientation="vertical">
 
     <WebView android:id="@+id/webview1"
         android:layout_width="match_parent"
-        android:layout_height="1700px"/>
-
+        android:layout_height="match_parent"
+        android:layout_weight="80"/>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/AdView"
@@ -17,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        android:layout_weight="20">
     </com.google.android.gms.ads.AdView>
-
 </LinearLayout>
